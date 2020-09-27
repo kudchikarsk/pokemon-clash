@@ -12,7 +12,7 @@ function Login() {
     }
 
     return (
-        <div className="text-center">            
+        <section>
             <div className="card login-card text-center bg-danger text-white">
                 <div className="card-header">
                     Begin your journey...
@@ -29,7 +29,7 @@ function Login() {
                     </form>
                 </div>
             </div>
-        </div>
+        </section>
     );
 }
 

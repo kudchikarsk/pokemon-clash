@@ -21,8 +21,8 @@ export default function Laboratory() {
     }
 
     return (
-        <div>
-            <div className="card mb-3 bg-danger text-white">
+        <section>
+             <div className="card mb-3 bg-danger text-white">
                 <div className="row no-gutters">
                     <div className="col-md-1">
                         <img src="/images/Samuel_Oak_Masters.png" className="card-img" alt="..." />
@@ -42,6 +42,6 @@ export default function Laboratory() {
                     </div>
                 ))}
             </div>
-        </div>
+        </section>
     );
 }
