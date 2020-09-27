@@ -7,16 +7,11 @@ import { sampleSize } from 'lodash';
 export default function Laboratory() {
     const [name, setName] = useState("");
     const [cards, setCards] = useState([]);
-    const { data, loading, error } = useFetch(`https://pokeapi.co/api/v2/pokemon/?limit=60`, { results: [] });
-
+    const starterPack =[1,4,7,10,13,16,19,21,23,25,27,29,32,35,37,39,41,43];
     useEffect(() => {
         setName(localStorage.getItem("name"));
-        setCards(sampleSize(data.results, 3));
-    }, [data]);
-
-    const imgStyle={
-        width:'100px'
-    };
+        setCards(sampleSize(starterPack, 3));
+    }, []);
 
     return (
         <div>
@@ -33,10 +28,10 @@ export default function Laboratory() {
                     </div>
                 </div>
             </div>
-            <div className="card-deck row row-cols-1 row-cols-md-3">
+            <div className="card-deck row row-cols-1 row-cols-md-3 mb-3">
                 {cards.map(c => (
                     <div className="col">
-                        <PokemonCard name={c.name} key={c.name} />
+                        <PokemonCard key={c} id={c} />
                     </div>
                 ))}
             </div>

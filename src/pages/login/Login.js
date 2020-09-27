@@ -6,7 +6,7 @@ function Login() {
     const [name, setName] = useState("");
     const history = useHistory();
 
-    function gotoHome() {
+    function gotoLab() {
         localStorage.setItem("name", name);
         history.push("/laboratory");
     }
@@ -24,7 +24,7 @@ function Login() {
                         </div>
 
                         <div className="form-group">
-                            <button type="submit" className="btn btn-light" onClick={e => gotoHome()}>Gotta Catch 'Em All!</button>
+                            <button type="submit" className="btn btn-light" onClick={e => gotoLab()}>Gotta Catch 'Em All!</button>
                         </div>
                     </form>
                 </div>
