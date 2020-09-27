@@ -6,7 +6,7 @@ import { getImage, getDescription } from "../../_utils/pokeapi-utils";
 
 const defaultImage = `/images/poke.gif`;
 
-export default function PokemonCard({ id }) {
+export default function PokemonCard({ id, onSelect }) {
     const { data: pokemon, loading: pokemonLoading, error: pokemonError } = useFetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
     const { data: species, loading: speciesLoading, error: speciesError } = useFetch(`https://pokeapi.co/api/v2/pokemon-species/${id}`);
 
@@ -23,7 +23,7 @@ export default function PokemonCard({ id }) {
     )
 
     return (
-        <div className="card h-100">
+        <div className="card h-100" onClick={e=> onSelect({id, pokemon, species})}>
             <img src={getImage(pokemon)} className="card-img-top" alt={pokemon.name} />
             <div className="card-body">
                 <h5 className="card-title">{toSentenceCase(pokemon.name)}</h5>
