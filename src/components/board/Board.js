@@ -4,6 +4,7 @@ import {getPlayerCards} from "../../_utils/player-utils"
 import BattleCard from "../battle-card/BattleCard";
 import "./Board.css"
 import useFetch from "../../_hooks/useFetch";
+import Loading from "../loading/Loading";
 
 
 export default function Board() {
@@ -11,20 +12,7 @@ export default function Board() {
     const [player, setPlayer] = useState(null);
     const [opponent, setOpponent] = useState(null);
     const {data:opponentCards, loading, error} = useFetch(`/random-cards.json`,[]);
-    
-    function onCardSelect (card) {
-        setPlayer({
-            selected:card,
-            cards:getPlayerCards()
-        });
-    }
-
-    function onOpponentCardSelect(card) {
-        setOpponent({
-            selected:card,
-            cards:opponentCards
-        });
-    }
+       
 
     useEffect(()=>{
         setPlayer({
@@ -39,18 +27,31 @@ export default function Board() {
 
     },[opponentCards]);
 
-    if(!player || !opponent) return (<h1>Loading...</h1>);
+    function onCardSelect (card) {
+        setPlayer({
+            selected:card,
+            cards:getPlayerCards()
+        });
+    }
+
+    function onOpponentCardSelect(card) {
+        setOpponent({
+            selected:card,
+            cards:opponentCards
+        });
+    }
+
+    if(!player || !opponent) return (<Loading/>);
     
     return (
-        <section className="board">
+        <section className="my-2">
             <Player player={opponent} onCardSelect={onOpponentCardSelect} />
             <div className="row my-5">
-                <div className="col-3 offset-2">
-                    <BattleCard card={player.selected} />
+                <div className="col-6">
+                    <BattleCard card={player.selected} isPlayer={true} />
                 </div>
-                <div className="col-2"></div>
-                <div className="col-3">
-                    <BattleCard card={opponent.selected} />
+                <div className="col-6">
+                    <BattleCard card={opponent.selected} isPlayer={false} />
                 </div>
             </div>
             <Player player={player} onCardSelect={onCardSelect} />
