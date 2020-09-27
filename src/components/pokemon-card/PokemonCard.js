@@ -2,14 +2,13 @@ import React, { useState } from "react";
 import "./PokemonCard.css"
 import useFetch from "../../_hooks/useFetch";
 import { toSentenceCase } from "../../_utils/strings";
-import { getImage, getDescription } from "../../_utils/pokeapi-utils";
+import { getImage, getDescription, defaultImage } from "../../_utils/pokeapi-utils";
 
-const defaultImage = `/images/poke.gif`;
+
 
 export default function PokemonCard({ id, onSelect }) {
     const { data: pokemon, loading: pokemonLoading, error: pokemonError } = useFetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
     const { data: species, loading: speciesLoading, error: speciesError } = useFetch(`https://pokeapi.co/api/v2/pokemon-species/${id}`);
-
     
 
     if (pokemonLoading || speciesLoading) return (

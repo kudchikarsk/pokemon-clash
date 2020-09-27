@@ -4,11 +4,11 @@ import { PokemonCard } from '../../components';
 import { sampleSize } from 'lodash';
 import { useHistory } from 'react-router-dom';
 import { addPlayerCard } from '../../_utils/player-utils';
+import { starterPack } from '../../_utils/pokeapi-utils';
 
 export default function Laboratory() {
     const [name, setName] = useState("");
-    const [cards, setCards] = useState([]);
-    const starterPack =[1,4,7,10,13,16,19,21,23,25,27,29,32,35,37,39,41,43];
+    const [cards, setCards] = useState([]);    
     const history = useHistory();
     useEffect(() => {
         setName(localStorage.getItem("name"));
