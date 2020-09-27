@@ -3,14 +3,15 @@ import Player from "../player/Player";
 import {getPlayerCards} from "../../_utils/player-utils"
 import BattleCard from "../battle-card/BattleCard";
 import "./Board.css"
+import useFetch from "../../_hooks/useFetch";
 
-const opponentCards =  getPlayerCards();
 
 export default function Board() {
     
     const [player, setPlayer] = useState(null);
     const [opponent, setOpponent] = useState(null);
-
+    const {data:opponentCards, loading, error} = useFetch(`/random-cards.json`,[]);
+    
     function onCardSelect (card) {
         setPlayer({
             selected:card,
@@ -36,7 +37,7 @@ export default function Board() {
             cards:opponentCards
         });
 
-    },[]);
+    },[opponentCards]);
 
     if(!player || !opponent) return (<h1>Loading...</h1>);
     
