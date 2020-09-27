@@ -35,9 +35,9 @@ export default function Laboratory() {
                     </div>
                 </div>
             </div>
-            <div className="card-deck row row-cols-1 row-cols-md-3 mb-3">
+            <div className="card-deck row justify-content-center mb-3">
                 {cards.map(c => (
-                    <div className="col">
+                    <div className="col-md-4 col-lg-3">
                         <PokemonCard key={c} id={c} onSelect={gotoTraining} />
                     </div>
                 ))}

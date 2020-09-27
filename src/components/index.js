@@ -1,5 +1,5 @@
 export {default as PokemonCard} from "./pokemon-card/PokemonCard";
-export {default as Opponent} from "./opponent/Opponent";
-export {default as Player} from "./player/Player";
 export {default as Board} from "./board/Board";
-export {default as BoardCard} from "./board-card/BoardCard";
+export {default as Player} from "./player/Player";
+export {default as PlayerDeck} from "./player-deck/PlayerDeck";
+export {default as PlayerCard} from "./player-card/PlayerCard";
