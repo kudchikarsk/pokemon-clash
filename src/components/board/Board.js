@@ -1,27 +1,26 @@
 import React, { useState, useEffect } from "react";
 import Player from "../player/Player";
 import {getPlayerCards} from "../../_utils/player-utils"
-import { starterPack } from "../../_utils/pokeapi-utils";
-import { sampleSize } from "lodash";
 import BattleCard from "../battle-card/BattleCard";
+import "./Board.css"
 
-const opponentCards =  sampleSize(starterPack,3).map(id=>({id}));
+const opponentCards =  getPlayerCards();
 
 export default function Board() {
     
     const [player, setPlayer] = useState(null);
     const [opponent, setOpponent] = useState(null);
 
-    function onCardSelect (pokemon) {
+    function onCardSelect (card) {
         setPlayer({
-            selected:pokemon,
+            selected:card,
             cards:getPlayerCards()
         });
     }
 
-    function onOpponentCardSelect(pokemon) {
+    function onOpponentCardSelect(card) {
         setOpponent({
-            selected:pokemon,
+            selected:card,
             cards:opponentCards
         });
     }
@@ -42,15 +41,15 @@ export default function Board() {
     if(!player || !opponent) return (<h1>Loading...</h1>);
     
     return (
-        <section>
+        <section className="board">
             <Player player={opponent} onCardSelect={onOpponentCardSelect} />
             <div className="row my-5">
                 <div className="col-3 offset-2">
-                    <BattleCard pokemon={player.selected} />
+                    <BattleCard card={player.selected} />
                 </div>
                 <div className="col-2"></div>
                 <div className="col-3">
-                    <BattleCard pokemon={opponent.selected} />
+                    <BattleCard card={opponent.selected} />
                 </div>
             </div>
             <Player player={player} onCardSelect={onCardSelect} />
