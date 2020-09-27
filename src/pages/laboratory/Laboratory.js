@@ -22,7 +22,7 @@ export default function Laboratory() {
 
     return (
         <section>
-             <div className="card mb-3 bg-danger text-white">
+             <div className="card my-2 bg-danger text-white">
                 <div className="row no-gutters">
                     <div className="col-md-1">
                         <img src="/images/Samuel_Oak_Masters.png" className="card-img" alt="..." />
@@ -35,9 +35,9 @@ export default function Laboratory() {
                     </div>
                 </div>
             </div>
-            <div className="card-deck row justify-content-center mb-3">
+            <div className="card-deck row no-gutters justify-content-center mb-3">
                 {cards.map(c => (
-                    <div className="col-md-4 col-lg-3">
+                    <div className="col-md-3 col-lg-2">
                         <PokemonCard key={c} id={c} onSelect={gotoTraining} />
                     </div>
                 ))}

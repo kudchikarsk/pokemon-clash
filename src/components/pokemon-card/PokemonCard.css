@@ -1,4 +1,4 @@
-.card:hover, .card:hover > ul > li {
+.card:hover {
     background-color: #dc3545;
     color: white;
     cursor: pointer;

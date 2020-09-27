@@ -26,12 +26,12 @@ export default function PokemonCard({ id, onSelect }) {
             <img src={getImage(pokemon)} className="card-img-top" alt={pokemon.name} />
             <div className="card-body">
                 <h5 className="card-title">{toSentenceCase(pokemon.name)}</h5>
-                <p className="card-text">{getDescription(species)}</p>
-            </div>
-            <ul className="list-group list-group-flush">
+                <p className="card-text">
                 {pokemon.types.map(t=>
-                    (<li className="list-group-item">{toSentenceCase(t.type.name)}</li>))}
-            </ul>
+                    (<span class="badge badge-dark mr-1">{toSentenceCase(t.type.name)}</span>))}
+                </p>
+                <p className="card-text">{getDescription(species)}</p>
+            </div>            
         </div>
     );
 }

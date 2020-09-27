@@ -5,7 +5,7 @@ import { Laboratory, Login, Training } from "./pages"
 
 function App() {
   return (
-    <div className="container-fluid mt-2">
+    <div className="container-fluid">
       <Router>
         <Route path="/login" component={Login} />
         <Route path="/laboratory" component={Laboratory} />
