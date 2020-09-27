@@ -7,9 +7,7 @@ export default function Move({move, strength}) {
     const {data, loading, error} = useFetch(move.move.url);
 
     if(loading || !move) return (
-    <li>
-        <Loading/>
-    </li>);
+    <li></li>);
 
     return (
         <li className="list-group-item">{toSentenceCase(data.name.replace("-"," "))}</li>
